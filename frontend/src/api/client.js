@@ -21,10 +21,17 @@ export async function api(path, { method = 'GET', body, params } = {}) {
     credentials: 'include',
   })
 
-  const data = await res.json().catch(() => ({}))
+  // Handle non-JSON responses
+  const contentType = res.headers.get('content-type')
+  let data
+  if (contentType && contentType.includes('application/json')) {
+    data = await res.json().catch(() => ({}))
+  } else {
+    data = await res.text().catch(() => '')
+  }
 
   if (!res.ok) {
-    const err = new Error(data.message || `Request failed (${res.status})`)
+    const err = new Error(data?.message || `Request failed (${res.status})`)
     err.status = res.status
     throw err
   }

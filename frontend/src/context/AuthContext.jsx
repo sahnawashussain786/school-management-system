@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react'
-import { api, apiGet, apiPost } from '../api/client'
+import { apiGet, apiPost } from '../api/client'
 
 const AuthContext = createContext(null)
 
@@ -23,14 +23,18 @@ export function AuthProvider({ children }) {
 
   const login = useCallback(async (email, password) => {
     const data = await apiPost('/auth/login', { email, password })
-    localStorage.setItem('token', data.token)
+    if (data.token) {
+      localStorage.setItem('token', data.token)
+    }
     setUser(data.user)
     return data.user
   }, [])
 
   const register = useCallback(async (payload) => {
-    const data = await api('/auth/register', { method: 'POST', body: payload })
-    localStorage.setItem('token', data.token)
+    const data = await apiPost('/auth/register', payload)
+    if (data.token) {
+      localStorage.setItem('token', data.token)
+    }
     setUser(data.user)
     return data.user
   }, [])
