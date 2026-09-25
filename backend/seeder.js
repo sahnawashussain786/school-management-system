@@ -1,6 +1,3 @@
-import dotenv from 'dotenv'
-dotenv.config()
-
 import mongoose from 'mongoose'
 import connectDB from './config/db.js'
 import {
@@ -20,6 +17,9 @@ import {
   Event,
 } from './models/index.js'
 
+// Allow running directly (node seeder.js) or being imported (smoke tests)
+const isDirectRun = process.argv[1] && process.argv[1].endsWith('seeder.js')
+
 const DAY_START = new Date(new Date().setHours(0, 0, 0, 0))
 const daysFromNow = (n) => {
   const d = new Date(DAY_START)
@@ -28,9 +28,7 @@ const daysFromNow = (n) => {
 }
 const pick = (arr, i) => arr[i % arr.length]
 
-const run = async () => {
-  await connectDB()
-
+export const seed = async () => {
   console.log('🧹 Clearing existing data...')
   await Promise.all([
     User.deleteMany({}),
@@ -477,11 +475,20 @@ const run = async () => {
   console.log('   Parent:  parent@school.edu   / parent123')
   console.log('')
 
+  console.log('')
+  console.log('✅ Seed complete!')
+}
+
+const run = async () => {
+  await connectDB()
+  await seed()
   await mongoose.disconnect()
   process.exit(0)
 }
 
-run().catch((err) => {
-  console.error('❌ Seed failed:', err)
-  process.exit(1)
-})
+if (isDirectRun) {
+  run().catch((err) => {
+    console.error('❌ Seed failed:', err)
+    process.exit(1)
+  })
+}
