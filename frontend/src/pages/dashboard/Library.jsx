@@ -44,6 +44,7 @@ export default function Library() {
       else await apiPut(`/library/${modal.item._id}`, payload)
       setModal(null)
       refetch()
+      toast.success('Book saved successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {

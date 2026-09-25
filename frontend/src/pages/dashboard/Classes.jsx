@@ -5,6 +5,7 @@ import {
   PageHeader, Table, Td, Button, Input, Select, Modal, Badge, Spinner,
   EmptyState, ErrorBanner,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 
 export default function Classes() {
   const { data, loading, error, refetch } = useApi('/classes?limit=100')
@@ -64,8 +65,9 @@ export default function Classes() {
     try {
       await apiDelete(`/classes/${id}`)
       refetch()
+      toast.success('Class deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

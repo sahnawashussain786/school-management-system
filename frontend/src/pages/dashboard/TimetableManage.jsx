@@ -34,6 +34,7 @@ export default function TimetableManage() {
     try {
       await apiPost('/timetable', { ...form, classId, period: Number(form.period) })
       refetch()
+      toast.success('Timetable entry added successfully')
     } catch (err) {
       setFormError(err.message)
     }

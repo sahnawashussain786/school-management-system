@@ -40,6 +40,7 @@ export default function Assignments() {
       })
       setModal(null)
       refetch()
+      toast.success('Assignment created successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {

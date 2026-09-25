@@ -43,6 +43,7 @@ export default function Events() {
       else await apiPut(`/events/${modal.item._id}`, form)
       setModal(null)
       refetch()
+      toast.success('Event saved successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {

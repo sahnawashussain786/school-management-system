@@ -41,6 +41,7 @@ export default function Exams() {
       })
       setModal(null)
       refetch()
+      toast.success('Exam created successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {
@@ -68,6 +69,7 @@ export default function Exams() {
       })
       setMarksExam(null)
       refetch()
+      toast.success('Marks saved successfully')
     } catch (e) {
       setMarksError(e.message)
     } finally {

@@ -60,6 +60,7 @@ export default function Teachers() {
       else await apiPut(`/teachers/${modal.teacher._id}`, payload)
       setModal(null)
       refetch()
+      toast.success('Teacher saved successfully')
     } catch (err) {
       setError(err.message)
     } finally {

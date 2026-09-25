@@ -74,6 +74,7 @@ export default function Students() {
       else await apiPut(`/students/${modal.student._id}`, payload)
       setModal(null)
       refetch()
+      toast.success('Student saved successfully')
     } catch (err) {
       setError(err.message)
     } finally {

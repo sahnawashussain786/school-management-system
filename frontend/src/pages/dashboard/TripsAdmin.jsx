@@ -73,6 +73,7 @@ export default function TripsAdmin() {
       else await apiPut(`/trips/${modal.item._id}`, payload)
       setModal(null)
       refetch()
+      toast.success('Trip saved successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {
