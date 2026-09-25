@@ -2,16 +2,12 @@
 echo Starting School Management System...
 echo.
 
-echo Starting Backend Server...
-start "Backend Server" cmd /k "cd backend && npm run dev"
+echo Running: npm run dev
+echo This will start both frontend and backend servers using concurrently.
+echo.
 
-echo Starting Frontend Server...
-start "Frontend Server" cmd /k "cd frontend && npm run dev"
+npm run dev
 
 echo.
-echo Both servers are starting in separate windows.
-echo - Backend: http://localhost:5000
-echo - Frontend: http://localhost:5173
-echo.
-echo Press any key to close this window (servers will continue running)...
+echo Servers stopped. Press any key to close this window...
 pause >nul

@@ -7,13 +7,10 @@ package-lock.json
 .env.local
 .env.*.local
 
-# Logs
-*.log
-npm-debug.log*
-
 # Build outputs
 dist/
 build/
+*.log
 
 # IDE
 .vscode/
@@ -25,6 +22,9 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+
+# Vite
+.vite/
 
 # MongoDB
 *.db
