@@ -5,6 +5,7 @@ import {
   PageHeader, Card, Button, Input, Select, Textarea, Modal, Badge, Spinner,
   EmptyState, ErrorBanner, StatCard,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 
 import { fmtDate, fmtMoney } from '../../utils/format'
 import { statusTone } from '../../utils/constants'
@@ -84,8 +85,9 @@ export default function TripsAdmin() {
     try {
       await apiDelete(`/trips/${id}`)
       refetch()
+      toast.success('Trip deleted successfully')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 
@@ -93,8 +95,9 @@ export default function TripsAdmin() {
     try {
       await apiPut(`/trips/${trip._id}`, { status })
       refetch()
+      toast.success(`Trip status updated to ${status}`)
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 
@@ -111,8 +114,9 @@ export default function TripsAdmin() {
     try {
       await apiPut(`/trips/${tripId}/registrations/${studentId}`, body)
       setView(await apiGet(`/trips/${tripId}`))
+      toast.success('Registration updated')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 
@@ -122,8 +126,9 @@ export default function TripsAdmin() {
       await apiDelete(`/trips/${tripId}/registrations/${studentId}`)
       setView(await apiGet(`/trips/${tripId}`))
       refetch()
+      toast.success('Student removed from trip')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

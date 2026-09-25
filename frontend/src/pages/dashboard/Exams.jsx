@@ -5,6 +5,7 @@ import {
   PageHeader, Table, Td, Button, Input, Select, Modal, Badge, Spinner,
   EmptyState, ErrorBanner,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 import { fmtDate } from '../../utils/format'
 
 const emptyExam = { name: '', examType: 'mid-term', classId: '', subjectId: '', date: '', totalMarks: 100, passingMarks: 40 }
@@ -78,8 +79,9 @@ export default function Exams() {
     try {
       await apiPut(`/exams/${exam._id}/publish`, { published: !exam.published })
       refetch()
+      toast.success(exam.published ? 'Exam unpublished' : 'Exam published')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

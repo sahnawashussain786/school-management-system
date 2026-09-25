@@ -5,6 +5,7 @@ import {
   PageHeader, Card, Button, Textarea, Modal, Badge, Spinner, EmptyState,
   ErrorBanner,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 import { fmtDate, fmtMoney } from '../../utils/format'
 import { statusTone } from '../../utils/constants'
 
@@ -50,8 +51,9 @@ export default function TripsPortal() {
     try {
       await apiDelete(`/trips/${trip._id}/register`)
       refetch()
+      toast.success('Registration cancelled')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

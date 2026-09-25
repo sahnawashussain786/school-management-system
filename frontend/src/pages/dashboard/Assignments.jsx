@@ -5,6 +5,7 @@ import {
   PageHeader, Table, Td, Button, Input, Select, Textarea, Modal, Badge, Spinner,
   EmptyState, ErrorBanner,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 import { fmtDate } from '../../utils/format'
 import { statusTone } from '../../utils/constants'
 
@@ -52,18 +53,19 @@ export default function Assignments() {
       setView(full)
       setGrades({})
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 
   const grade = async (assignmentId, studentId) => {
     const marks = grades[studentId]
-    if (marks === undefined || marks === '') return alert('Enter marks first')
+    if (marks === undefined || marks === '') return toast.error('Enter marks first')
     try {
       await apiPut(`/assignments/${assignmentId}/grade`, { studentId, marks: Number(marks) })
       openView({ _id: assignmentId })
+      toast.success('Marks saved')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 
@@ -72,8 +74,9 @@ export default function Assignments() {
     try {
       await apiDelete(`/assignments/${id}`)
       refetch()
+      toast.success('Assignment deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

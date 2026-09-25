@@ -5,6 +5,7 @@ import {
   PageHeader, Table, Td, Button, Input, Select, Modal, Badge, Spinner,
   EmptyState, ErrorBanner, Pagination, StatCard, Card,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 
 import { fmtDate, fmtMoney } from '../../utils/format'
 import { useAuth } from '../../context/AuthContext'
@@ -63,7 +64,7 @@ export default function Fees() {
       })
       setGenModal(false)
       refetch()
-      alert(`Created ${res.created} invoices.`)
+      toast.success(`Created ${res.created} invoices.`)
     } catch (err) {
       setFormError(err.message)
     } finally {
@@ -76,8 +77,9 @@ export default function Fees() {
     try {
       await apiDelete(`/fees/${id}`)
       refetch()
+      toast.success('Invoice deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

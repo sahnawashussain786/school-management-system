@@ -5,6 +5,7 @@ import {
   PageHeader, Table, Td, Button, Input, Select, Modal, Badge, Spinner,
   EmptyState, ErrorBanner, Pagination,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 import { statusTone } from '../../utils/constants'
 
 
@@ -85,8 +86,9 @@ export default function Students() {
     try {
       await apiDelete(`/students/${id}`)
       refetch()
+      toast.success('Student deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

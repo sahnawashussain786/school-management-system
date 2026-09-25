@@ -4,6 +4,7 @@ import { apiPost, apiPut, apiDelete } from '../../api/client'
 import {
   PageHeader, Table, Td, Button, Input, Modal, Badge, Spinner, EmptyState, ErrorBanner,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 
 export default function Subjects() {
   const { data, loading, error, refetch } = useApi('/subjects?limit=100')
@@ -46,8 +47,9 @@ export default function Subjects() {
     try {
       await apiDelete(`/subjects/${id}`)
       refetch()
+      toast.success('Subject deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

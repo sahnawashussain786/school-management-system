@@ -5,6 +5,7 @@ import {
   PageHeader, Button, Input, Select, Textarea, Modal, Badge, Spinner,
   EmptyState, ErrorBanner, Card,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 import { fmtDate } from '../../utils/format'
 
 const emptyForm = { title: '', description: '', category: 'academic', startDate: '', endDate: '', location: '', isPublic: true }
@@ -54,8 +55,9 @@ export default function Events() {
     try {
       await apiDelete(`/events/${id}`)
       refetch()
+      toast.success('Event deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

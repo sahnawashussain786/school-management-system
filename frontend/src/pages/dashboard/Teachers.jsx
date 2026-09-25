@@ -5,6 +5,7 @@ import {
   PageHeader, Table, Td, Button, Input, Modal, Badge, Spinner,
   EmptyState, ErrorBanner, Pagination,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 import { statusTone } from '../../utils/constants'
 
 const emptyForm = {
@@ -71,8 +72,9 @@ export default function Teachers() {
     try {
       await apiDelete(`/teachers/${id}`)
       refetch()
+      toast.success('Teacher deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

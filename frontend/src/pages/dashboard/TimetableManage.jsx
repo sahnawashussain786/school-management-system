@@ -4,6 +4,7 @@ import { apiPost, apiDelete } from '../../api/client'
 import {
   PageHeader, Card, Button, Select, Input, Spinner, EmptyState, ErrorBanner,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 const SLOTS = [
@@ -42,8 +43,9 @@ export default function TimetableManage() {
     try {
       await apiDelete(`/timetable/${id}`)
       refetch()
+      toast.success('Timetable entry removed')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

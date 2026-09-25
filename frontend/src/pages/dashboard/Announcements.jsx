@@ -5,6 +5,7 @@ import {
   PageHeader, Button, Input, Select, Textarea, Modal, Badge, Spinner,
   EmptyState, ErrorBanner, Card,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 import { fmtDate } from '../../utils/format'
 import { useAuth } from '../../context/AuthContext'
 
@@ -50,8 +51,9 @@ export default function Announcements() {
     try {
       await apiDelete(`/announcements/${id}`)
       refetch()
+      toast.success('Announcement deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 

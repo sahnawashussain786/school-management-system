@@ -4,6 +4,7 @@ import { apiPost, apiPut, apiDelete } from '../../api/client'
 import {
   PageHeader, Table, Td, Button, Input, Modal, Badge, Spinner, EmptyState, ErrorBanner,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 
 import { useAuth } from '../../context/AuthContext'
 
@@ -55,8 +56,9 @@ export default function Library() {
     try {
       await apiDelete(`/library/${id}`)
       refetch()
+      toast.success('Book deleted')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 
@@ -67,8 +69,9 @@ export default function Library() {
       await apiPost(`/library/${borrowModal._id}/borrow`, borrowStudent ? { studentId: borrowStudent } : {})
       setBorrowModal(null)
       refetch()
+      toast.success('Book issued successfully')
     } catch (err) {
-      alert(err.message)
+      toast.error(err.message)
     } finally {
       setBusy(false)
     }
@@ -76,12 +79,13 @@ export default function Library() {
 
   const doReturn = async (book) => {
     const activeLoan = (book.loans || []).find((l) => l.status !== 'returned')
-    if (!activeLoan) return alert('No active loan for this book.')
+    if (!activeLoan) return toast.error('No active loan for this book.')
     try {
       await apiPost(`/library/${book._id}/return`, { studentId: activeLoan.student })
       refetch()
+      toast.success('Book returned successfully')
     } catch (e) {
-      alert(e.message)
+      toast.error(e.message)
     }
   }
 
