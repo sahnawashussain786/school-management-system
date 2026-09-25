@@ -26,6 +26,7 @@ export const protect = async (req, res, next) => {
     }
     next()
   } catch (err) {
+    console.error('Auth middleware error:', err.message)
     return res.status(401).json({ message: 'Not authorized, token failed' })
   }
 }
@@ -37,7 +38,11 @@ export const protect = async (req, res, next) => {
 export const authorize =
   (...roles) =>
   (req, res, next) => {
-    if (!req.user || !roles.includes(req.user.role)) {
+    if (!req.user) {
+      return res.status(403).json({ message: 'Access denied: no user found in request' })
+    }
+    if (!roles.includes(req.user.role)) {
+      console.error(`Access denied: user role "${req.user.role}" not in allowed roles: ${roles.join(', ')}`)
       return res
         .status(403)
         .json({ message: `Access denied: requires role ${roles.join(' or ')}` })
