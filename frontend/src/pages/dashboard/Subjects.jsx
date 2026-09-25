@@ -35,6 +35,7 @@ export default function Subjects() {
       else await apiPut(`/subjects/${modal.item._id}`, form)
       setModal(null)
       refetch()
+      toast.success('Subject saved successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {

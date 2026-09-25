@@ -53,6 +53,7 @@ export default function Classes() {
       else await apiPut(`/classes/${modal.item._id}`, payload)
       setModal(null)
       refetch()
+      toast.success('Class saved successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {

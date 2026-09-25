@@ -4,6 +4,7 @@ import { apiGet, apiPost } from '../../api/client'
 import {
   PageHeader, Card, Button, Select, Input, Badge, Spinner, EmptyState, ErrorBanner,
 } from '../../components/ui'
+import { toast } from 'react-toastify'
 import { toInputDate } from '../../utils/format'
 
 const STATUSES = ['unmarked', 'present', 'absent', 'late', 'excused']
@@ -50,6 +51,7 @@ export default function Attendance() {
         records: records.map((r) => ({ student: r.student, status: r.status, note: r.note })),
       })
       setSaved(true)
+      toast.success('Attendance saved successfully')
     } catch (e) {
       setPageError(e.message)
     } finally {

@@ -39,6 +39,7 @@ export default function Announcements() {
       else await apiPut(`/announcements/${modal.item._id}`, form)
       setModal(null)
       refetch()
+      toast.success('Announcement saved successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {

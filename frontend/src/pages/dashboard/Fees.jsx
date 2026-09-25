@@ -46,6 +46,7 @@ export default function Fees() {
       await apiPost(`/fees/${payModal._id}/pay`, { ...payForm, amount: Number(payForm.amount) })
       setPayModal(null)
       refetch()
+      toast.success('Payment recorded successfully')
     } catch (err) {
       setFormError(err.message)
     } finally {

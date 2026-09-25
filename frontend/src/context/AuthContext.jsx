@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { apiGet, apiPost } from '../api/client'
+import { toast } from 'react-toastify'
 
 const AuthContext = createContext(null)
 
@@ -27,6 +28,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem('token', data.token)
     }
     setUser(data.user)
+    toast.success('Login successful')
     return data.user
   }, [])
 
@@ -42,6 +44,7 @@ export function AuthProvider({ children }) {
   const logout = useCallback(async () => {
     try {
       await apiPost('/auth/logout')
+      toast.success('Logged out successfully')
     } catch {
       // ignore
     }
