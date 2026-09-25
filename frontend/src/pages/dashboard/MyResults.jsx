@@ -1,5 +1,5 @@
 import useApi from '../../hooks/useApi'
-import { PageHeader, Table, Td, Spinner, EmptyState, ErrorBanner, Badge, Card } from '../../components/ui'
+import { PageHeader, Table, Td, Spinner, EmptyState, Badge, Card } from '../../components/ui'
 import { fmtDate } from '../../utils/format'
 
 export default function MyResults() {

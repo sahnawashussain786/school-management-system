@@ -4,7 +4,7 @@ import { apiPost, apiPut, apiDelete } from '../../api/client'
 import {
   PageHeader, Table, Td, Button, Input, Modal, Badge, Spinner, EmptyState, ErrorBanner,
 } from '../../components/ui'
-import { fmtDate } from '../../utils/format'
+
 import { useAuth } from '../../context/AuthContext'
 
 const emptyBook = { title: '', author: '', isbn: '', category: '', totalCopies: 1, shelf: '' }

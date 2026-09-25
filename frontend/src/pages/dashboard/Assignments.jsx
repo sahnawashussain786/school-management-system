@@ -3,9 +3,10 @@ import useApi from '../../hooks/useApi'
 import { apiGet, apiPost, apiPut, apiDelete } from '../../api/client'
 import {
   PageHeader, Table, Td, Button, Input, Select, Textarea, Modal, Badge, Spinner,
-  EmptyState, ErrorBanner, statusTone,
+  EmptyState, ErrorBanner,
 } from '../../components/ui'
 import { fmtDate } from '../../utils/format'
+import { statusTone } from '../../utils/constants'
 
 const emptyForm = { title: '', description: '', classId: '', subjectId: '', dueDate: '', totalMarks: 100 }
 

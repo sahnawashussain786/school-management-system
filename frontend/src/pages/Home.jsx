@@ -4,8 +4,6 @@ import { apiGet } from '../api/client'
 import { fmtDate } from '../utils/format'
 import { Badge } from '../components/ui'
 
-const fadeUp = 'animate-[fadeUp_0.6s_ease-out_both]'
-
 export default function Home() {
   const [announcements, setAnnouncements] = useState([])
   const [trips, setTrips] = useState([])

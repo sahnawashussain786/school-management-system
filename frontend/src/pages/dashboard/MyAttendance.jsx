@@ -1,5 +1,5 @@
 import useApi from '../../hooks/useApi'
-import { PageHeader, Card, Spinner, EmptyState, ErrorBanner, Badge } from '../../components/ui'
+import { PageHeader, Card, Spinner, EmptyState, Badge } from '../../components/ui'
 import { fmtDate } from '../../utils/format'
 
 const tone = { present: 'green', absent: 'red', late: 'amber', excused: 'blue', unmarked: 'gray' }

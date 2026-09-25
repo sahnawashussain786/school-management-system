@@ -2,9 +2,10 @@ import { useState } from 'react'
 import useApi from '../../hooks/useApi'
 import { apiGet, apiPost, apiPut, apiDelete } from '../../api/client'
 import {
-  PageHeader, Table, Td, Button, Input, Select, Modal, Badge, Spinner,
-  EmptyState, ErrorBanner, Pagination, statusTone,
+  PageHeader, Table, Td, Button, Input, Modal, Badge, Spinner,
+  EmptyState, ErrorBanner, Pagination,
 } from '../../components/ui'
+import { statusTone } from '../../utils/constants'
 
 const emptyForm = {
   name: '', email: '', password: '', phone: '', employeeId: '', department: '',

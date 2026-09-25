@@ -3,9 +3,10 @@ import useApi from '../../hooks/useApi'
 import { apiPost } from '../../api/client'
 import {
   PageHeader, Table, Td, Button, Textarea, Modal, Badge, Spinner,
-  EmptyState, ErrorBanner, statusTone, Card,
+  EmptyState, ErrorBanner, Card,
 } from '../../components/ui'
 import { fmtDate } from '../../utils/format'
+import { statusTone } from '../../utils/constants'
 
 export default function MyAssignments() {
   const { data, loading, error, refetch } = useApi('/assignments/my')

@@ -112,34 +112,6 @@ export function Badge({ tone = 'gray', className = '', children }) {
   )
 }
 
-export const statusTone = {
-  active: 'green',
-  present: 'green',
-  paid: 'green',
-  open: 'green',
-  published: 'green',
-  graded: 'green',
-  returned: 'green',
-  submitted: 'blue',
-  partial: 'amber',
-  late: 'amber',
-  'on-leave': 'amber',
-  unmarked: 'gray',
-  draft: 'gray',
-  unpaid: 'red',
-  overdue: 'red',
-  absent: 'red',
-  cancelled: 'red',
-  closed: 'gray',
-  completed: 'blue',
-  inactive: 'gray',
-  pending: 'amber',
-  borrowed: 'blue',
-  missing: 'red',
-  transferred: 'gray',
-  graduated: 'blue',
-}
-
 /* ---------- Modal ---------- */
 export function Modal({ open, onClose, title, children, footer, wide = false }) {
   if (!open) return null

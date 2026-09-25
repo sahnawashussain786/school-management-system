@@ -1,5 +1,5 @@
 import useApi from '../../hooks/useApi'
-import { PageHeader, Spinner, EmptyState, ErrorBanner, Card } from '../../components/ui'
+import { PageHeader, Spinner, EmptyState, Card } from '../../components/ui'
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 const SLOTS = ['1', '2', '3', '4', '5', '6']

@@ -5,12 +5,14 @@ const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(() => {
+    const token = localStorage.getItem('token')
+    return !!token
+  })
 
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (!token) {
-      setLoading(false)
       return
     }
     apiGet('/auth/me')
@@ -43,10 +45,10 @@ export function AuthProvider({ children }) {
     setUser(null)
   }, [])
 
+  const value = { user, loading, login, register, logout, isAuthenticated: !!user }
+
   return (
-    <AuthContext.Provider
-      value={{ user, loading, login, register, logout, isAuthenticated: !!user }}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   )

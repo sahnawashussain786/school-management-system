@@ -23,13 +23,12 @@ export default function Attendance() {
   useEffect(() => {
     if (!classId || !date) return
     let active = true
-    setLoadingRoster(true)
-    setSaved(false)
     apiGet('/attendance/roster', { classId, date })
       .then((res) => {
         if (!active) return
         setRoster(res)
         setRecords(res.records)
+        setSaved(false)
       })
       .catch((e) => active && setPageError(e.message))
       .finally(() => active && setLoadingRoster(false))

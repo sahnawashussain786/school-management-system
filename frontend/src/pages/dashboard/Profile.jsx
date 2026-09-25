@@ -4,7 +4,7 @@ import { apiPut } from '../../api/client'
 import { PageHeader, Card, Input, Button, ErrorBanner } from '../../components/ui'
 
 export default function Profile() {
-  const { user, login } = useAuth()
+  const { user } = useAuth()
   const [name, setName] = useState(user?.name || '')
   const [phone, setPhone] = useState(user?.phone || '')
   const [pw, setPw] = useState({ current: '', next: '', confirm: '' })

@@ -24,6 +24,7 @@ import libraryRoutes from './routes/libraryRoutes.js'
 import announcementRoutes from './routes/announcementRoutes.js'
 import eventRoutes from './routes/eventRoutes.js'
 import dashboardRoutes from './routes/dashboardRoutes.js'
+import timetableRoutes from './routes/timetableRoutes.js'
 
 const app = express()
 

@@ -3,11 +3,12 @@ import useApi from '../../hooks/useApi'
 import { apiPost, apiDelete } from '../../api/client'
 import {
   PageHeader, Table, Td, Button, Input, Select, Modal, Badge, Spinner,
-  EmptyState, ErrorBanner, Pagination, StatCard, statusTone, Card,
+  EmptyState, ErrorBanner, Pagination, StatCard, Card,
 } from '../../components/ui'
+
 import { fmtDate, fmtMoney } from '../../utils/format'
 import { useAuth } from '../../context/AuthContext'
-import { apiGet } from '../../api/client'
+import { statusTone } from '../../utils/constants'
 
 export default function Fees() {
   const { user } = useAuth()

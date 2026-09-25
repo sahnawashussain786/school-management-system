@@ -3,9 +3,10 @@ import useApi from '../../hooks/useApi'
 import { apiPost, apiDelete } from '../../api/client'
 import {
   PageHeader, Card, Button, Textarea, Modal, Badge, Spinner, EmptyState,
-  ErrorBanner, statusTone,
+  ErrorBanner,
 } from '../../components/ui'
 import { fmtDate, fmtMoney } from '../../utils/format'
+import { statusTone } from '../../utils/constants'
 
 const catTone = { educational: 'blue', adventure: 'amber', cultural: 'purple', sports: 'green', community: 'green', other: 'gray' }
 const payTone = { paid: 'green', unpaid: 'red', refunded: 'gray' }
