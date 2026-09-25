@@ -40,7 +40,7 @@ const tripSchema = new mongoose.Schema(
       {
         student: { type: mongoose.Schema.Types.ObjectId, ref: 'Student' },
         registeredAt: { type: Date, default: Date.now },
-        paymentStatus: { type: String, enum: ['unpaid', 'paid', 'refunded'], default: 'unpaid' },
+        paymentStatus: { type: String, enum: ['unpaid', 'partial', 'paid', 'refunded'], default: 'unpaid' },
         consentSigned: { type: Boolean, default: false },
         notes: { type: String, default: '' },
         _id: false,

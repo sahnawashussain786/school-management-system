@@ -10,7 +10,7 @@ import { fmtDate, fmtMoney } from '../../utils/format'
 import { statusTone } from '../../utils/constants'
 
 const catTone = { educational: 'blue', adventure: 'amber', cultural: 'purple', sports: 'green', community: 'green', other: 'gray' }
-const payTone = { paid: 'green', unpaid: 'red', refunded: 'gray' }
+const payTone = { paid: 'green', partial: 'amber', unpaid: 'red', refunded: 'gray' }
 
 const emptyTrip = {
   title: '', destination: '', description: '', category: 'educational',
