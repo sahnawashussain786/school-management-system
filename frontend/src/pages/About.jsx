@@ -10,10 +10,10 @@ export default function About() {
     <div>
       <section className="bg-navy-900 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-white">About Greenwood</h1>
+          <h1 className="text-4xl font-bold text-white">About Junior Champ's</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            Founded in 1998, Greenwood International School is a co-educational day school serving
-            1,200 students from kindergarten through grade 12.
+            Junior Champ's Higher Secondary School Chandia is a co-educational day school serving
+            students from kindergarten through grade 12.
           </p>
         </div>
       </section>

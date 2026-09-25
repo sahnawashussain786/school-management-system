@@ -21,7 +21,7 @@ export default function Home() {
           className="absolute inset-0 opacity-25"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 20% 20%, rgba(44,127,92,0.5), transparent 40%), radial-gradient(circle at 80% 60%, rgba(44,127,92,0.35), transparent 45%)',
+              'radial-gradient(circle at 20% 20%, rgba(220,38,38,0.5), transparent 40%), radial-gradient(circle at 80% 60%, rgba(220,38,38,0.35), transparent 45%)',
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
@@ -33,7 +33,7 @@ export default function Home() {
               Nurturing Minds, <span className="text-brand-300">Building Futures</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-slate-300">
-              Greenwood International School combines academic excellence, pastoral care and a vibrant
+              Junior Champ's Higher Secondary School Chandia combines academic excellence, pastoral care and a vibrant
               programme of trips and activities to help every student thrive — from their first day to
               graduation.
             </p>
@@ -176,7 +176,7 @@ export default function Home() {
       {/* CTA */}
       <section className="bg-brand-700 py-16">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white">Ready to join Greenwood?</h2>
+          <h2 className="text-3xl font-bold text-white">Ready to join Junior Champ's?</h2>
           <p className="mx-auto mt-3 max-w-xl text-brand-100">
             Book a campus tour, meet our teachers and see the school in action. We look forward to
             welcoming your family.

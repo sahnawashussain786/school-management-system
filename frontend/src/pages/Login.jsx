@@ -43,7 +43,7 @@ export default function Login() {
           className="absolute inset-0 opacity-30"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 30% 30%, rgba(44,127,92,0.6), transparent 45%), radial-gradient(circle at 70% 75%, rgba(44,127,92,0.4), transparent 40%)',
+              'radial-gradient(circle at 30% 30%, rgba(220,38,38,0.6), transparent 45%), radial-gradient(circle at 70% 75%, rgba(220,38,38,0.4), transparent 40%)',
           }}
         />
         <div className="relative flex h-full flex-col justify-center px-16">

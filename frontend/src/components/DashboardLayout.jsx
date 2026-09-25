@@ -120,13 +120,13 @@ export default function DashboardLayout() {
 
   const Brand = (
     <div className="flex h-16 shrink-0 items-center gap-2.5 border-b border-white/10 px-5">
-      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600 text-white">
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3L2 8l10 5 10-5-10-5zM4 11.5V16c0 1.66 3.58 3 8 3s8-1.34 8-3v-4.5l-8 4-8-4z" />
-        </svg>
-      </span>
+      <img 
+        src="/src/assets/school-logo.jpg" 
+        alt="Junior Champ's Higher Secondary School Chandia Logo" 
+        className="h-9 w-9 object-contain"
+      />
       <div>
-        <p className="text-sm font-bold leading-tight text-white">Greenwood</p>
+        <p className="text-sm font-bold leading-tight text-white">Junior Champ's</p>
         <p className="text-[11px] leading-tight text-slate-400">Management Portal</p>
       </div>
     </div>
