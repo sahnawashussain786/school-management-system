@@ -1,13 +1,17 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema(
   {
-    title: { type: String, required: [true, 'Event title is required'], trim: true },
-    description: { type: String, trim: true, default: '' },
+    title: {
+      type: String,
+      required: [true, "Event title is required"],
+      trim: true,
+    },
+    description: { type: String, trim: true, default: "" },
     category: {
       type: String,
-      enum: ['academic', 'sports', 'cultural', 'holiday', 'meeting', 'other'],
-      default: 'other',
+      enum: ["academic", "sports", "cultural", "holiday", "meeting", "other"],
+      default: "other",
     },
     startDate: { type: Date, required: true },
     endDate: { type: Date },
@@ -15,6 +19,6 @@ const eventSchema = new mongoose.Schema(
     isPublic: { type: Boolean, default: true },
   },
   { timestamps: true },
-)
+);
 
-export default mongoose.model('Event', eventSchema)
+export default mongoose.model("Event", eventSchema);

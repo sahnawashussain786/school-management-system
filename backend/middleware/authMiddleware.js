@@ -1,35 +1,35 @@
-import User from '../models/User.js'
+import User from "../models/User.js";
 
 /**
  * Protect routes — requires a valid JWT (from httpOnly cookie or
  * Authorization: Bearer header).
  */
 export const protect = async (req, res, next) => {
-  let token
+  let token;
 
   if (req.cookies?.token) {
-    token = req.cookies.token
-  } else if (req.headers.authorization?.startsWith('Bearer ')) {
-    token = req.headers.authorization.split(' ')[1]
+    token = req.cookies.token;
+  } else if (req.headers.authorization?.startsWith("Bearer ")) {
+    token = req.headers.authorization.split(" ")[1];
   }
 
   if (!token) {
-    return res.status(401).json({ message: 'Not authorized, no token' })
+    return res.status(401).json({ message: "Not authorized, no token" });
   }
 
   try {
-    const jwt = (await import('jsonwebtoken')).default
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'devsecret')
-    req.user = await User.findById(decoded.id)
+    const jwt = (await import("jsonwebtoken")).default;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || "devsecret");
+    req.user = await User.findById(decoded.id);
     if (!req.user) {
-      return res.status(401).json({ message: 'User no longer exists' })
+      return res.status(401).json({ message: "User no longer exists" });
     }
-    next()
+    next();
   } catch (err) {
-    console.error('Auth middleware error:', err.message)
-    return res.status(401).json({ message: 'Not authorized, token failed' })
+    console.error("Auth middleware error:", err.message);
+    return res.status(401).json({ message: "Not authorized, token failed" });
   }
-}
+};
 
 /**
  * Restrict a route to specific roles.
@@ -39,13 +39,19 @@ export const authorize =
   (...roles) =>
   (req, res, next) => {
     if (!req.user) {
-      return res.status(403).json({ message: 'Access denied: no user found in request' })
-    }
-    if (!roles.includes(req.user.role)) {
-      console.error(`Access denied: user role "${req.user.role}" not in allowed roles: ${roles.join(', ')}`)
       return res
         .status(403)
-        .json({ message: `Access denied: requires role ${roles.join(' or ')}` })
+        .json({ message: "Access denied: no user found in request" });
     }
-    next()
-  }
+    if (!roles.includes(req.user.role)) {
+      console.error(
+        `Access denied: user role "${req.user.role}" not in allowed roles: ${roles.join(", ")}`,
+      );
+      return res
+        .status(403)
+        .json({
+          message: `Access denied: requires role ${roles.join(" or ")}`,
+        });
+    }
+    next();
+  };

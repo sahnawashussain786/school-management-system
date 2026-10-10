@@ -1,26 +1,26 @@
-import { Router } from 'express'
+import { Router } from "express";
 import {
   getStudents,
   getStudent,
   createStudent,
   updateStudent,
   deleteStudent,
-} from '../controllers/studentController.js'
-import { protect, authorize } from '../middleware/authMiddleware.js'
+} from "../controllers/studentController.js";
+import { protect, authorize } from "../middleware/authMiddleware.js";
 
-const router = Router()
+const router = Router();
 
-router.use(protect)
-
-router
-  .route('/')
-  .get(authorize('admin', 'teacher'), getStudents)
-  .post(authorize('admin'), createStudent)
+router.use(protect);
 
 router
-  .route('/:id')
-  .get(authorize('admin', 'teacher'), getStudent)
-  .put(authorize('admin'), updateStudent)
-  .delete(authorize('admin'), deleteStudent)
+  .route("/")
+  .get(authorize("admin", "teacher"), getStudents)
+  .post(authorize("admin"), createStudent);
 
-export default router
+router
+  .route("/:id")
+  .get(authorize("admin", "teacher"), getStudent)
+  .put(authorize("admin"), updateStudent)
+  .delete(authorize("admin"), deleteStudent);
+
+export default router;

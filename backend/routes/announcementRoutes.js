@@ -1,24 +1,24 @@
-import { Router } from 'express'
+import { Router } from "express";
 import {
   getAnnouncements,
   createAnnouncement,
   updateAnnouncement,
   deleteAnnouncement,
-} from '../controllers/announcementController.js'
-import { protect, authorize } from '../middleware/authMiddleware.js'
+} from "../controllers/announcementController.js";
+import { protect, authorize } from "../middleware/authMiddleware.js";
 
-const router = Router()
+const router = Router();
 
-router.use(protect)
+router.use(protect);
 
 router
-  .route('/')
+  .route("/")
   .get(getAnnouncements)
-  .post(authorize('admin', 'teacher'), createAnnouncement)
+  .post(authorize("admin", "teacher"), createAnnouncement);
 
 router
-  .route('/:id')
-  .put(authorize('admin', 'teacher'), updateAnnouncement)
-  .delete(authorize('admin', 'teacher'), deleteAnnouncement)
+  .route("/:id")
+  .put(authorize("admin", "teacher"), updateAnnouncement)
+  .delete(authorize("admin", "teacher"), deleteAnnouncement);
 
-export default router
+export default router;
