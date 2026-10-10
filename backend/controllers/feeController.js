@@ -1,5 +1,5 @@
 import FeeInvoice from '../models/FeeInvoice.js'
-import Student from '../models/Student.js'
+import StudentModel from '../models/Student.js'
 import { buildFilter, getPagination } from '../utils/queryHelpers.js'
 
 const recalcStatus = (invoice) => {
@@ -18,10 +18,10 @@ export const getInvoices = async (req, res) => {
   const { page, limit, skip, sort } = getPagination(req.query)
 
   if (req.user.role === 'student') {
-    const student = await Student.findOne({ user: req.user._id })
+    const student = await StudentModel.findOne({ user: req.user._id })
     filter.student = student?._id || null
   } else if (req.user.role === 'parent') {
-    const student = await Student.findOne({ parent: req.user._id })
+    const student = await StudentModel.findOne({ parent: req.user._id })
     filter.student = student?._id || null
   }
 

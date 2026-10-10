@@ -1,5 +1,5 @@
 import LibraryBook from '../models/LibraryBook.js'
-import Student from '../models/Student.js'
+import StudentModel from '../models/Student.js'
 import { buildFilter, getPagination } from '../utils/queryHelpers.js'
 
 // @desc   List books
@@ -67,9 +67,9 @@ export const borrowBook = async (req, res) => {
 
   let student
   if (studentId) {
-    student = await Student.findById(studentId)
+    student = await StudentModel.findById(studentId)
   } else {
-    student = await Student.findOne({ user: req.user._id })
+    student = await StudentModel.findOne({ user: req.user._id })
   }
   if (!student) return res.status(404).json({ message: 'Student not found' })
 

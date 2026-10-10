@@ -1,5 +1,5 @@
 import Attendance from '../models/Attendance.js'
-import Student from '../models/Student.js'
+import StudentModel from '../models/Student.js'
 import { buildFilter, getPagination } from '../utils/queryHelpers.js'
 
 // @desc   Get class roster for marking attendance on a date
@@ -81,13 +81,8 @@ export const getAttendance = async (req, res) => {
 // @desc   Attendance summary for the logged-in student (or parent's child)
 // @route  GET /api/attendance/my/summary
 export const getMySummary = async (req, res) => {
-  const Student = (await import('../models/Student.js')).default
-  let student
-  if (req.user.role === 'student') {
-    student = await Student.findOne({ user: req.user._id })
-  } else if (req.user.role === 'parent') {
-    student = await Student.findOne({ parent: req.user._id })
-  }
+  const student = await StudentModel.findOne({ user: req.user._id })
+    || await StudentModel.findOne({ parent: req.user._id })
   if (!student) return res.status(404).json({ message: 'Student profile not found' })
   req.params.studentId = student._id
   return getStudentAttendance(req, res)

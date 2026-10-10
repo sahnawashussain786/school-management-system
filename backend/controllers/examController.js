@@ -1,5 +1,5 @@
 import Exam from '../models/Exam.js'
-import Student from '../models/Student.js'
+import StudentModel from '../models/Student.js'
 import { buildFilter, getPagination } from '../utils/queryHelpers.js'
 
 const computeGrade = (marks, total, passing) => {
@@ -42,7 +42,7 @@ export const getExam = async (req, res) => {
 
   // attach student names
   const doc = exam.toObject()
-  const roster = await Student.find({
+  const roster = await StudentModel.find({
     _id: { $in: doc.results.map((r) => r.student).filter(Boolean) },
   }).populate('user', 'name')
   const nameMap = new Map(roster.map((s) => [String(s._id), s.user?.name || '']))
@@ -62,7 +62,7 @@ export const createExam = async (req, res) => {
     return res.status(400).json({ message: 'classId, subjectId, name and date are required' })
   }
 
-  const students = await Student.find({ class: classId, status: 'active' })
+  const students = await StudentModel.find({ class: classId, status: 'active' })
   const exam = await Exam.create({
     name,
     examType,
@@ -116,7 +116,7 @@ export const publishExam = async (req, res) => {
 // @desc   Results of the logged-in student
 // @route  GET /api/exams/my/results
 export const getMyResults = async (req, res) => {
-  const student = await Student.findOne({ user: req.user._id })
+  const student = await StudentModel.findOne({ user: req.user._id })
   if (!student) return res.status(404).json({ message: 'Student profile not found' })
 
   const exams = await Exam.find({

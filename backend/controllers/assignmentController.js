@@ -1,6 +1,6 @@
 import Assignment from '../models/Assignment.js'
-import Student from '../models/Student.js'
-import Teacher from '../models/Teacher.js'
+import StudentModel from '../models/Student.js'
+import TeacherModel from '../models/Teacher.js'
 import { buildFilter, getPagination } from '../utils/queryHelpers.js'
 
 // @desc   List assignments (filter by class, subject)
@@ -33,7 +33,7 @@ export const getAssignment = async (req, res) => {
 
   const doc = assignment.toObject()
   const studentIds = doc.submissions.map((s) => s.student?._id || s.student).filter(Boolean)
-  const roster = await Student.find({ _id: { $in: studentIds } }).populate('user', 'name')
+  const roster = await StudentModel.find({ _id: { $in: studentIds } }).populate('user', 'name')
   const nameMap = new Map(roster.map((s) => [String(s._id), s.user?.name || '']))
   doc.submissions = doc.submissions.map((s) => ({
     ...s,
@@ -50,7 +50,7 @@ export const createAssignment = async (req, res) => {
     return res.status(400).json({ message: 'classId, subjectId, title and dueDate are required' })
   }
 
-  const teacher = await Teacher.findOne({ user: req.user._id })
+  const teacher = await TeacherModel.findOne({ user: req.user._id })
   const assignment = await Assignment.create({
     title,
     description,
@@ -90,7 +90,7 @@ export const submitAssignment = async (req, res) => {
   const assignment = await Assignment.findById(req.params.id)
   if (!assignment) return res.status(404).json({ message: 'Assignment not found' })
 
-  const student = await Student.findOne({ user: req.user._id })
+  const student = await StudentModel.findOne({ user: req.user._id })
   if (!student) return res.status(403).json({ message: 'Only students can submit' })
 
   const late = new Date() > new Date(assignment.dueDate)
@@ -135,7 +135,7 @@ export const gradeSubmission = async (req, res) => {
 // @desc   Assignments + submission status for the logged-in student
 // @route  GET /api/assignments/my
 export const getMyAssignments = async (req, res) => {
-  const student = await Student.findOne({ user: req.user._id })
+  const student = await StudentModel.findOne({ user: req.user._id })
   if (!student) return res.json([])
 
   const assignments = await Assignment.find({ class: student.class })

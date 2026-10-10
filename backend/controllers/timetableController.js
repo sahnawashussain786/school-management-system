@@ -1,6 +1,6 @@
 import Timetable from '../models/Timetable.js'
-import Student from '../models/Student.js'
-import Teacher from '../models/Teacher.js'
+import StudentModel from '../models/Student.js'
+import TeacherModel from '../models/Teacher.js'
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -64,7 +64,7 @@ export const deleteEntry = async (req, res) => {
 // @desc   Timetable for logged-in student
 // @route  GET /api/timetable/my/week
 export const getMyTimetable = async (req, res) => {
-  const student = await Student.findOne({ user: req.user._id })
+  const student = await StudentModel.findOne({ user: req.user._id })
   if (!student?.class) return res.json({})
 
   const entries = await Timetable.find({ class: student.class })
@@ -92,7 +92,7 @@ export const getMyTimetable = async (req, res) => {
 // @desc   Teaching schedule for logged-in teacher
 // @route  GET /api/timetable/my/schedule
 export const getMySchedule = async (req, res) => {
-  const teacher = await Teacher.findOne({ user: req.user._id })
+  const teacher = await TeacherModel.findOne({ user: req.user._id })
   if (!teacher) return res.json({})
 
   const entries = await Timetable.find({ teacher: teacher._id })

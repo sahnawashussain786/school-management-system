@@ -1,6 +1,6 @@
 import Trip from '../models/Trip.js'
-import Student from '../models/Student.js'
-import Teacher from '../models/Teacher.js'
+import StudentModel from '../models/Student.js'
+import TeacherModel from '../models/Teacher.js'
 import { buildFilter, getPagination } from '../utils/queryHelpers.js'
 
 const populateAll = [
@@ -52,13 +52,13 @@ export const getTrip = async (req, res) => {
 
   // For students/parents include own registration state
   if (req.user.role === 'student') {
-    const student = await Student.findOne({ user: req.user._id })
+    const student = await StudentModel.findOne({ user: req.user._id })
     doc.myRegistration = student
       ? trip.registrations.find((r) => String(r.student) === String(student._id)) || null
       : null
     doc.myStudentId = student?._id || null
   } else if (req.user.role === 'parent') {
-    const child = await Student.findOne({ parent: req.user._id })
+    const child = await StudentModel.findOne({ parent: req.user._id })
     doc.myRegistration = child
       ? trip.registrations.find((r) => String(r.student) === String(child._id)) || null
       : null
@@ -168,9 +168,9 @@ export const registerForTrip = async (req, res) => {
 
   let student
   if (req.user.role === 'student') {
-    student = await Student.findOne({ user: req.user._id })
+    student = await StudentModel.findOne({ user: req.user._id })
   } else if (req.user.role === 'parent') {
-    student = await Student.findOne({ parent: req.user._id })
+    student = await StudentModel.findOne({ parent: req.user._id })
   } else {
     return res.status(403).json({ message: 'Only students and parents can register' })
   }
@@ -178,8 +178,8 @@ export const registerForTrip = async (req, res) => {
 
   // Grade level check
   if (trip.gradesAllowed?.length && student.class) {
-    const Class = (await import('../models/Class.js')).default
-    const cls = await Class.findById(student.class)
+    const ClassModel = (await import('../models/Class.js')).default
+    const cls = await ClassModel.findById(student.class)
     if (cls && !trip.gradesAllowed.includes(cls.gradeLevel)) {
       return res.status(400).json({ message: `This trip is only for grades: ${trip.gradesAllowed.join(', ')}` })
     }
@@ -208,8 +208,8 @@ export const cancelRegistration = async (req, res) => {
   if (!trip) return res.status(404).json({ message: 'Trip not found' })
 
   let student
-  if (req.user.role === 'student') student = await Student.findOne({ user: req.user._id })
-  else if (req.user.role === 'parent') student = await Student.findOne({ parent: req.user._id })
+  if (req.user.role === 'student') student = await StudentModel.findOne({ user: req.user._id })
+  else if (req.user.role === 'parent') student = await StudentModel.findOne({ parent: req.user._id })
   else return res.status(403).json({ message: 'Not allowed' })
   if (!student) return res.status(404).json({ message: 'Student profile not found' })
 
