@@ -22,4 +22,4 @@ classSchema.virtual('label').get(function () {
   return `${this.name}`
 })
 
-export default mongoose.model('SchoolClass', classSchema)
+export default mongoose.model('Class', classSchema)

@@ -7,7 +7,7 @@ import {
   User,
   Student,
   Teacher,
-  SchoolClass,
+  Class,
   Subject,
   Attendance,
   Exam,
@@ -173,7 +173,7 @@ export const seed = async () => {
     { name: "Grade 10 - A", gradeLevel: 10, section: "A", room: "204" },
     { name: "Grade 11 - Science", gradeLevel: 11, section: "S", room: "310" },
   ];
-  const classes = await SchoolClass.create(
+  const classes = await Class.create(
     classDefs.map((c, i) => ({
       ...c,
       homeroomTeacher: teachers[i % teachers.length]._id,

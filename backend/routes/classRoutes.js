@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { createCrud } from "../controllers/crudController.js";
-import SchoolClass from "../models/Class.js";
+import Class from "../models/Class.js";
 import { protect, authorize } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
 router.use(protect);
 
-const classCrud = createCrud(SchoolClass, {
+const classCrud = createCrud(Class, {
   textFields: ["name", "section"],
   populate: [
     {

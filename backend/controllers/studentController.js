@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import Student from "../models/Student.js";
-import SchoolClass from "../models/Class.js";
+
 import { buildFilter, getPagination } from "../utils/queryHelpers.js";
 
 // @desc   List students with filters (class, status, search)

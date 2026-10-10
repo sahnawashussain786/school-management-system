@@ -1,13 +1,13 @@
 import User from '../models/User.js'
 import StudentModel from '../models/Student.js'
 import TeacherModel from '../models/Teacher.js'
-import ClassModel from '../models/Class.js'
+import Class from '../models/Class.js'
 import FeeInvoice from '../models/FeeInvoice.js'
 import Announcement from '../models/Announcement.js'
-import TripModel from '../models/Trip.js'
+import Trip from '../models/Trip.js'
 import Attendance from '../models/Attendance.js'
-import EventModel from '../models/Event.js'
-import ExamModel from '../models/Exam.js'
+import Event from '../models/Event.js'
+import Exam from '../models/Exam.js'
 
 // @desc   Dashboard overview stats for the logged-in user's role
 // @route  GET /api/dashboard
@@ -22,8 +22,8 @@ export const getDashboard = async (req, res) => {
     const [studentCount, teacherCount, classCount, tripAgg] = await Promise.all([
       StudentModel.countDocuments({ status: 'active' }),
       TeacherModel.countDocuments({ status: 'active' }),
-      ClassModel.countDocuments(),
-      TripModel.aggregate([
+      Class.countDocuments(),
+      Trip.aggregate([
         { $project: { regs: { $size: { $ifNull: ['$registrations', []] } } } },
         { $group: { _id: null, total: { $sum: '$regs' } } },
       ]),
@@ -50,7 +50,7 @@ export const getDashboard = async (req, res) => {
       .limit(5)
       .populate('author', 'name')
 
-    const upcomingTrips = await TripModel.find({
+    const upcomingTrips = await      Trip.find({
       startDate: { $gte: today },
       status: { $nin: ['cancelled', 'completed'] },
     })
@@ -81,7 +81,7 @@ export const getDashboard = async (req, res) => {
     const teacher = await TeacherModel.findOne({ user: req.user._id }).populate('classes', 'name')
     const classIds = teacher?.classes?.map((c) => c._id) || []
 
-    const upcomingTrips = await TripModel.find({
+    const upcomingTrips = await Trip.find({
       coordinators: teacher?._id,
       startDate: { $gte: today },
     })
@@ -134,7 +134,7 @@ export const getDashboard = async (req, res) => {
     const overdueInvoices = invoices.filter((i) => i.status === 'overdue').length
 
     // trips registered
-    const registeredTrips = await TripModel.find({ 'registrations.student': student._id }).sort(
+    const registeredTrips = await Trip.find({ 'registrations.student': student._id }).sort(
       '-startDate',
     )
 
@@ -145,7 +145,7 @@ export const getDashboard = async (req, res) => {
       .sort('-publishedAt')
       .limit(5)
 
-    const upcomingEvents = await EventModel.find({ startDate: { $gte: today }, isPublic: true })
+    const upcomingEvents = await Event.find({ startDate: { $gte: today }, isPublic: true })
       .sort('startDate')
       .limit(5)
 
