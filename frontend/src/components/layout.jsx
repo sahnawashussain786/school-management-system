@@ -7,11 +7,11 @@ const Logo = ({ light = false }) => (
   <Link to="/" className="flex items-center gap-2.5">
     <img 
       src="/src/assets/school-logo.jpg" 
-      alt="Junior Champ's Higher Secondary School Chandia Logo" 
+      alt="Greenwood International School Logo" 
       className="h-10 w-10 object-contain"
     />
     <span className={`text-sm font-bold tracking-tight ${light ? 'text-white' : 'text-slate-900'}`}>
-      JUNIOR CHAMP'S <span className="text-brand-600">HIGHER SECONDARY SCHOOL</span>
+      GREENWOOD <span className="text-brand-600">INTERNATIONAL SCHOOL</span>
     </span>
   </Link>
 )
@@ -107,7 +107,7 @@ function Footer() {
           <div className="md:col-span-2">
             <Logo light />
             <p className="mt-4 max-w-md text-sm leading-6 text-slate-400">
-              Junior Champ's Higher Secondary School Chandia has been nurturing curious minds. We combine
+              Greenwood International School has been nurturing curious minds. We combine
               academic excellence with character development to prepare students for a changing world.
             </p>
           </div>
@@ -126,14 +126,14 @@ function Footer() {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Contact</h4>
             <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
-              <li>Chandia, Madhya Pradesh, India</li>
-              <li>+91 XXXXX XXXXX</li>
-              <li>info@juniorchamps.edu</li>
+              <li>45 Meadowbrook Avenue, Springfield, CA 90210</li>
+              <li>+1 (555) 234-8890</li>
+              <li>office@greenwoodschool.edu</li>
             </ul>
           </div>
         </div>
         <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} Junior Champ's Higher Secondary School Chandia. All rights reserved.
+          © {new Date().getFullYear()} Greenwood International School. All rights reserved.
         </div>
       </div>
     </footer>

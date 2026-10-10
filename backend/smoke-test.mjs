@@ -22,7 +22,7 @@ await connectDB()
 const server = app.listen(5599)
 
 // run seeder against the same connection
-await import('./seeder-run.js').catch(() => null)
+await import('./seeder.js').catch(() => null)
 
 const BASE = 'http://localhost:5599/api'
 let failures = 0

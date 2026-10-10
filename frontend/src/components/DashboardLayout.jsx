@@ -122,11 +122,11 @@ export default function DashboardLayout() {
     <div className="flex h-16 shrink-0 items-center gap-2.5 border-b border-white/10 px-5">
       <img 
         src="/src/assets/school-logo.jpg" 
-        alt="Junior Champ's Higher Secondary School Chandia Logo" 
+        alt="Greenwood International School Logo" 
         className="h-9 w-9 object-contain"
       />
       <div>
-        <p className="text-sm font-bold leading-tight text-white">Junior Champ's</p>
+        <p className="text-sm font-bold leading-tight text-white">Greenwood</p>
         <p className="text-[11px] leading-tight text-slate-400">Management Portal</p>
       </div>
     </div>

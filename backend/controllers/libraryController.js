@@ -114,7 +114,7 @@ export const returnBook = async (req, res) => {
 // @desc   Student's borrowed books
 // @route  GET /api/library/my/loans
 export const getMyLoans = async (req, res) => {
-  const student = await Student.findOne({ user: req.user._id })
+  const student = await StudentModel.findOne({ user: req.user._id })
   if (!student) return res.json([])
 
   const books = await LibraryBook.find({ 'loans.student': student._id })
