@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
-const uri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/schoolms";
-
 const connectDB = async () => {
+  // Read MONGO_URI here, not at module scope: this module is imported before
+  // dotenv.config() runs (ES module imports are hoisted), so a module-level
+  // `const uri` would permanently lock in the localhost fallback in dev.
+  const uri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/schoolms";
   mongoose.set("strictQuery", true);
 
   // In serverless environments, try to reuse connection
