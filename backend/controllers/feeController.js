@@ -63,10 +63,10 @@ export const generateInvoices = async (req, res) => {
       .json({ message: "classId, title, amount and dueDate are required" });
   }
 
-  const students = await Student.find({ class: classId, status: "active" });
+  const students = await StudentModel.find({ class: classId, status: "active" });
   const created = [];
-  const count = await FeeInvoice.countDocuments();
-  let seq = count + 1;
+  // Use a random suffix so invoice numbers stay unique across retries/seeds
+  let seq = Math.floor(Math.random() * 90000) + 10000;
 
   for (const student of students) {
     const invoiceNumber = `INV-${new Date().getFullYear()}-${String(seq).padStart(5, "0")}`;

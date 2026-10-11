@@ -10,7 +10,7 @@ export const getRoster = async (req, res) => {
     return res.status(400).json({ message: "classId and date are required" });
   }
 
-  const students = await Student.find({ class: classId, status: "active" })
+  const students = await StudentModel.find({ class: classId, status: "active" })
     .populate("user", "name")
     .sort("rollNumber");
 

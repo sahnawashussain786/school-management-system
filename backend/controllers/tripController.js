@@ -40,7 +40,7 @@ export const getTrip = async (req, res) => {
   const doc = trip.toObject();
   // enrich registrations with student info
   const ids = doc.registrations.map((r) => r.student).filter(Boolean);
-  const students = await Student.find({ _id: { $in: ids } }).populate(
+  const students = await StudentModel.find({ _id: { $in: ids } }).populate(
     "user",
     "name email",
   );

@@ -1,6 +1,7 @@
-const API_URL = import.meta.env.PROD_SECURE_URL
-  ? `${import.meta.env.PROD_SECURE_URL}/api`
-  : "/api";
+// The API is always served from the same origin:
+// - Dev: Vite proxies /api -> http://localhost:5000
+// - Prod (Vercel): /api/* is rewritten to the backend serverless function
+const API_URL = "/api";
 
 const getToken = () => localStorage.getItem("token");
 
@@ -36,8 +37,6 @@ export async function api(path, { method = "GET", body, params } = {}) {
   if (!res.ok) {
     const err = new Error(data?.message || `Request failed (${res.status})`);
     err.status = res.status;
-    // Log the error for debugging
-    console.error(`API Error: ${method} ${path} - ${res.status}`, data);
     throw err;
   }
   return data;

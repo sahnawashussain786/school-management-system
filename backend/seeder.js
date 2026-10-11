@@ -169,9 +169,9 @@ export const seed = async () => {
   }
 
   const classDefs = [
-    { name: "Grade 9 - A", gradeLevel: 9, section: "A", room: "101" },
-    { name: "Grade 10 - A", gradeLevel: 10, section: "A", room: "204" },
-    { name: "Grade 11 - Science", gradeLevel: 11, section: "S", room: "310" },
+    { name: "Grade 9 - A", gradeLevel: 9, section: "A", roomNumber: "101" },
+    { name: "Grade 10 - A", gradeLevel: 10, section: "A", roomNumber: "204" },
+    { name: "Grade 11 - Science", gradeLevel: 11, section: "S", roomNumber: "310" },
   ];
   const classes = await Class.create(
     classDefs.map((c, i) => ({

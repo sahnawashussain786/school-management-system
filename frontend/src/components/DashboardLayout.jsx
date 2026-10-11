@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink, Link, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import logo from '../assets/school-logo.jpg'
 
 const Icon = ({ d }) => (
   <svg className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -121,7 +122,7 @@ export default function DashboardLayout() {
   const Brand = (
     <div className="flex h-16 shrink-0 items-center gap-2.5 border-b border-white/10 px-5">
       <img 
-        src="/src/assets/school-logo.jpg" 
+        src={logo} 
         alt="Greenwood International School Logo" 
         className="h-9 w-9 object-contain"
       />

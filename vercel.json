@@ -1,12 +1,16 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "frontend/dist/**", "use": "@vercel/static" },
-    { "src": "backend/api/index.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "backend/api/index.js" },
-    { "src": "/", "dest": "frontend/dist/index.html" },
-    { "src": "/(.*)", "dest": "frontend/dist/$1" }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "web": {
+      "root": "frontend/"
+    },
+    "api": {
+      "root": "backend/",
+      "entrypoint": "api/index.js"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": { "service": "api" } },
+    { "source": "/(.*)", "destination": { "service": "web" } }
   ]
 }

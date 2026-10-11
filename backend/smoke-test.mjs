@@ -22,7 +22,8 @@ await connectDB()
 const server = app.listen(5599)
 
 // run seeder against the same connection
-await import('./seeder.js').catch(() => null)
+const seederModule = await import('./seeder.js')
+if (seederModule.seed) await seederModule.seed()
 
 const BASE = 'http://localhost:5599/api'
 let failures = 0
@@ -215,9 +216,12 @@ console.log('\n— Library / Announcements / Timetable —')
   const books = await req('GET', '/library', { token: adminToken })
   check('list books', books.status === 200 && books.data.total >= 3)
 
+  // admin must pass explicit studentId — grab first student from /students
+  const studentList = await req('GET', '/students?limit=1', { token: adminToken })
+  const firstStudent = studentList.data?.items?.[0]
   const borrow = await req('POST', `/library/${books.data.items[0]._id}/borrow`, {
     token: adminToken,
-    body: {},
+    body: firstStudent ? { studentId: firstStudent._id } : {},
   })
   check('borrow book for self', borrow.status === 201, JSON.stringify(borrow.data))
 

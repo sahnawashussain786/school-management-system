@@ -79,8 +79,14 @@ export const borrowBook = async (req, res) => {
   let student;
   if (studentId) {
     student = await StudentModel.findById(studentId);
+  } else if (req.user.role === "student" || req.user.role === "parent") {
+    student =
+      (await StudentModel.findOne({ user: req.user._id })) ||
+      (await StudentModel.findOne({ parent: req.user._id }));
   } else {
-    student = await StudentModel.findOne({ user: req.user._id });
+    return res
+      .status(400)
+      .json({ message: "Select the student who is borrowing this book" });
   }
   if (!student) return res.status(404).json({ message: "Student not found" });
 
@@ -111,7 +117,7 @@ export const returnBook = async (req, res) => {
   let target;
   if (studentId) target = String(studentId);
   else {
-    const student = await Student.findOne({ user: req.user._id });
+    const student = await StudentModel.findOne({ user: req.user._id });
     target = String(student?._id || "");
   }
 

@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Button } from './ui'
+import logo from '../assets/school-logo.jpg'
 
 const Logo = ({ light = false }) => (
   <Link to="/" className="flex items-center gap-2.5">
     <img 
-      src="/src/assets/school-logo.jpg" 
+      src={logo} 
       alt="Greenwood International School Logo" 
       className="h-10 w-10 object-contain"
     />
