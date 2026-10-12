@@ -9,13 +9,12 @@ const router = Router();
 // @route  GET /api/public/info
 router.get("/info", (req, res) => {
   res.json({
-    name: "Greenwood International School",
+    name: "Junior Champ's Higher Secondary School, Chandia",
     tagline: "Nurturing Minds, Building Futures",
-    founded: 1998,
-    address: "45 Meadowbrook Avenue, Springfield, CA 90210",
-    phone: "+1 (555) 234-8890",
-    email: "office@greenwoodschool.edu",
-    hours: "Mon – Fri: 8:00 AM – 4:00 PM",
+    director: "Shakeel Khan",
+    address: "Ward No. 9, Near Naogaza Baba Dargah, Chandia, District Umaria, Madhya Pradesh",
+    phone: "+91 9806859090",
+    classes: "Nursery to 12th",
   });
 });
 

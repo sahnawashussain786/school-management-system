@@ -88,7 +88,7 @@ export default function Overview() {
         title={<Greeting />}
         subtitle={
           user.role === 'admin'
-            ? "Here's what's happening at Greenwood today."
+            ? "Here's what's happening at Junior Champ's today."
             : user.role === 'teacher'
               ? 'Your classes and updates at a glance.'
               : user.role === 'parent'

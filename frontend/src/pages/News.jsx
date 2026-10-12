@@ -17,7 +17,7 @@ export default function News() {
       <section className="bg-navy-900 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-white">News & Events</h1>
-          <p className="mt-4 text-lg text-slate-300">The latest from around the Greenwood International School campus.</p>
+          <p className="mt-4 text-lg text-slate-300">The latest from around the Junior Champ's Higher Secondary School campus.</p>
         </div>
       </section>
 

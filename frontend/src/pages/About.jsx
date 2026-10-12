@@ -10,10 +10,10 @@ export default function About() {
     <div>
       <section className="bg-navy-900 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-white">About Greenwood International School</h1>
+          <h1 className="text-4xl font-bold text-white">About Junior Champ's Higher Secondary School, Chandia</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            Greenwood International School is a co-educational day school serving
-            students from kindergarten through grade 12.
+            Junior Champ's Higher Secondary School, Chandia is a co-educational day school in Chandia,
+            District Umaria, Madhya Pradesh, serving students from Nursery through class 12.
           </p>
         </div>
       </section>
@@ -31,7 +31,7 @@ export default function About() {
             <h2 className="mt-10 text-2xl font-bold text-slate-900">Our Vision</h2>
             <p className="mt-4 leading-7 text-slate-600">
               To be the school of choice in our region, recognised for academic excellence, innovative
-              teaching and graduates who lead purposeful lives in a global community.
+              teaching and graduates who lead purposeful lives in the community.
             </p>
           </div>
           <div className="grid content-start gap-4 sm:grid-cols-2">
@@ -47,11 +47,11 @@ export default function About() {
 
       <section className="bg-slate-100 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900">Leadership Team</h2>
+          <h2 className="text-2xl font-bold text-slate-900">Leadership</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ['Dr. Evelyn Hartman', 'Principal', 'Ph.D. Education Leadership — 22 years in education'],
-              ['Mr. Samuel Osei', 'Deputy Principal', 'M.Ed. Curriculum & Instruction'],
+              ['Shakeel Khan', 'Director', 'Leading the school with a vision of accessible, quality education for all'],
+              ['Mr. Samuel Osei', 'Principal', 'M.Ed. Curriculum & Instruction'],
               ['Ms. Rita Alvarez', 'Head of Admissions', 'B.A. Communications'],
               ['Mr. Ken Watanabe', 'Head of Student Life', 'M.A. Counselling Psychology'],
             ].map(([n, r, d]) => (

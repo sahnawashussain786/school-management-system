@@ -10,7 +10,7 @@ const steps = [
 
 const faqs = [
   ['What are the school hours?', 'The school day runs 8:00 AM – 3:30 PM, with optional after-school clubs until 5:00 PM.'],
-  ['Do you offer transport?', 'Yes — bus routes cover the greater Springfield area. Routes and fees are shared with the enrolment pack.'],
+  ['Do you offer transport?', 'Yes — bus routes cover Chandia and surrounding areas. Routes and fees are shared with the enrolment pack.'],
   ['What are the class sizes?', 'Capped at 24 students in lower school and 28 in upper school, with homeroom teachers for every section.'],
   ['Is there a waiting list?', 'Popular year groups may have a short waiting list; we always inform families of their status within two weeks.'],
 ]
@@ -22,8 +22,8 @@ export default function Admissions() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-white">Admissions</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            Places are still available for the 2026/27 academic year in most year groups at Greenwood International School. We accept
-            applications all year round.
+            Places are still available for the 2026/27 academic year in most classes at Junior Champ's Higher Secondary School, Chandia. We accept
+            applications all year round — from Nursery right up to class 12.
           </p>
         </div>
       </section>

@@ -1,4 +1,4 @@
-# Greenwood International School - Management System
+# Junior Champ's Higher Secondary School, Chandia - Management System
 
 A full-stack school management system built with the MERN stack (MongoDB, Express, React, Node.js).
 

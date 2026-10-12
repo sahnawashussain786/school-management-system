@@ -56,7 +56,7 @@ export const seed = async () => {
     email: "admin@school.edu",
     password: "admin123",
     role: "admin",
-    phone: "+1 555 0100",
+    phone: "+91 98068 59090",
   });
 
   const teacherSeed = [
@@ -141,7 +141,7 @@ export const seed = async () => {
     email: "parent@school.edu",
     password: "parent123",
     role: "parent",
-    phone: "+1 555 0777",
+    phone: "+91 98000 0777",
   });
 
   console.log("📚 Subjects & classes...");
@@ -199,10 +199,10 @@ export const seed = async () => {
       dateOfBirth: daysFromNow(-365 * (14 + (i % 3))),
       gender: i % 2 === 0 ? "female" : "male",
       guardianName: `Guardian of ${studentSeed[i]}`,
-      guardianPhone: `+1 555 02${String(i).padStart(2, "0")}`,
+      guardianPhone: `+91 98000 02${String(i).padStart(2, "0")}`,
       parent: i === 0 ? parentUser._id : null,
       bloodGroup: pick(["A+", "O+", "B+", "AB+"], i),
-      address: "Springfield, CA",
+      address: "Chandia, Dist. Umaria, MP",
     });
     students.push(s);
   }
@@ -494,7 +494,7 @@ export const seed = async () => {
       startDate: daysFromNow(14),
       endDate: daysFromNow(14),
       departureTime: "08:00",
-      meetingPoint: "Main Gate, Greenwood International School",
+      meetingPoint: "Main Gate, Junior Champ's Higher Secondary School",
       costPerStudent: 25,
       includes: [
         "Coach travel",
@@ -578,7 +578,7 @@ export const seed = async () => {
     },
     {
       title: "City Art Gallery & Studio Day",
-      destination: "Springfield Museum of Art",
+      destination: "State Museum, Rewa",
       description:
         "A cultural day trip exploring the modern collection, followed by a printmaking studio session with a local artist.",
       itinerary: [
